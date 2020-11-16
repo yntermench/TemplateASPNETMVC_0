@@ -13,7 +13,7 @@ namespace TemplateforAspNetCore_0.Controllers
     [Authorize]
     public class AccountController : Controller
     {
-        public readonly UserManager<IdentityUser> userManager;
+        private readonly UserManager<IdentityUser> userManager;
         private readonly SignInManager<IdentityUser> signInManager;
         public AccountController(UserManager<IdentityUser> userMgr, SignInManager<IdentityUser> signinMgr)
         {
@@ -52,7 +52,7 @@ namespace TemplateforAspNetCore_0.Controllers
         public async Task<IActionResult> Logout()
         {
             await signInManager.SignOutAsync();
-            return RedirectToAction("Home", "Index");
+            return RedirectToAction("Index", "Home");
         }
     }
 }

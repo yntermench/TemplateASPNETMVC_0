@@ -22,9 +22,10 @@ namespace TemplateforAspNetCore_0
     {
         public IConfiguration Configuration { get; }
         public Startup(IConfiguration configuration) => Configuration = configuration;
+
         public void ConfigureServices(IServiceCollection services)
         {
-            //Подключаем конфиг из appsetings.json
+            //подключаем конфиг из appsetting.json
             Configuration.Bind("Project", new Config());
 
             //подключаем нужный функционал приложения в качестве сервисов
@@ -35,14 +36,14 @@ namespace TemplateforAspNetCore_0
             //подключаем контекст БД
             services.AddDbContext<AppDbContext>(x => x.UseSqlServer(Config.ConnectionString));
 
-            //Настраиваем identity систему
+            //настраиваем identity систему
             services.AddIdentity<IdentityUser, IdentityRole>(opts =>
             {
                 opts.User.RequireUniqueEmail = true;
                 opts.Password.RequiredLength = 6;
                 opts.Password.RequireNonAlphanumeric = false;
-                opts.Password.RequireUppercase = false;
                 opts.Password.RequireLowercase = false;
+                opts.Password.RequireUppercase = false;
                 opts.Password.RequireDigit = false;
             }).AddEntityFrameworkStores<AppDbContext>().AddDefaultTokenProviders();
 
@@ -62,11 +63,11 @@ namespace TemplateforAspNetCore_0
                 x.AddPolicy("AdminArea", policy => { policy.RequireRole("admin"); });
             });
 
-            //добавляем сервисы для  контроллеров и представлений(MVC)
+            //добавляем сервисы для контроллеров и представлений (MVC)
             services.AddControllersWithViews(x =>
-                {
-                    x.Conventions.Add(new AdminAreaAuthorization("Admin", "AdminArea"));
-                })
+            {
+                x.Conventions.Add(new AdminAreaAuthorization("Admin", "AdminArea"));
+            })
                 //выставляем совместимость с asp.net core 3.0
                 .SetCompatibilityVersion(CompatibilityVersion.Version_3_0).AddSessionStateTempDataProvider();
         }
