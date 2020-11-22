@@ -15,9 +15,9 @@ namespace TemplateforAspNetCore_0.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "3.1.1")
+                .UseIdentityColumns()
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
-                .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                .HasAnnotation("ProductVersion", "5.0.0");
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
                 {
@@ -29,18 +29,18 @@ namespace TemplateforAspNetCore_0.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
-                        .HasColumnType("nvarchar(256)")
-                        .HasMaxLength(256);
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
 
                     b.Property<string>("NormalizedName")
-                        .HasColumnType("nvarchar(256)")
-                        .HasMaxLength(256);
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
 
                     b.HasKey("Id");
 
                     b.HasIndex("NormalizedName")
                         .IsUnique()
-                        .HasName("RoleNameIndex")
+                        .HasDatabaseName("RoleNameIndex")
                         .HasFilter("[NormalizedName] IS NOT NULL");
 
                     b.ToTable("AspNetRoles");
@@ -49,7 +49,7 @@ namespace TemplateforAspNetCore_0.Migrations
                         new
                         {
                             Id = "8af10569-b018-4fe7-a380-7d6a14c70b74",
-                            ConcurrencyStamp = "7ec60eac-507e-4d00-a234-5ad76ba88ac0",
+                            ConcurrencyStamp = "8bb7b57b-6793-4244-bd38-e938bcd23349",
                             Name = "admin",
                             NormalizedName = "ADMIN"
                         });
@@ -60,7 +60,7 @@ namespace TemplateforAspNetCore_0.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .UseIdentityColumn();
 
                     b.Property<string>("ClaimType")
                         .HasColumnType("nvarchar(max)");
@@ -92,8 +92,8 @@ namespace TemplateforAspNetCore_0.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Email")
-                        .HasColumnType("nvarchar(256)")
-                        .HasMaxLength(256);
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
 
                     b.Property<bool>("EmailConfirmed")
                         .HasColumnType("bit");
@@ -105,12 +105,12 @@ namespace TemplateforAspNetCore_0.Migrations
                         .HasColumnType("datetimeoffset");
 
                     b.Property<string>("NormalizedEmail")
-                        .HasColumnType("nvarchar(256)")
-                        .HasMaxLength(256);
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
 
                     b.Property<string>("NormalizedUserName")
-                        .HasColumnType("nvarchar(256)")
-                        .HasMaxLength(256);
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
 
                     b.Property<string>("PasswordHash")
                         .HasColumnType("nvarchar(max)");
@@ -128,17 +128,17 @@ namespace TemplateforAspNetCore_0.Migrations
                         .HasColumnType("bit");
 
                     b.Property<string>("UserName")
-                        .HasColumnType("nvarchar(256)")
-                        .HasMaxLength(256);
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
 
                     b.HasKey("Id");
 
                     b.HasIndex("NormalizedEmail")
-                        .HasName("EmailIndex");
+                        .HasDatabaseName("EmailIndex");
 
                     b.HasIndex("NormalizedUserName")
                         .IsUnique()
-                        .HasName("UserNameIndex")
+                        .HasDatabaseName("UserNameIndex")
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers");
@@ -148,12 +148,12 @@ namespace TemplateforAspNetCore_0.Migrations
                         {
                             Id = "3b62472e-4f66-49fa-a20f-e7685b9565d8",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "00ecbbe7-0836-438f-b98f-47ec8f3cf37d",
+                            ConcurrencyStamp = "8931b457-e201-402b-907b-7201ffc2158d",
                             Email = "my@email.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedUserName = "ADMIN",
-                            PasswordHash = "AQAAAAEAACcQAAAAEF0uh0EbC9g2af1mKJwbPY/ULpM6+2aMpBhCyfFGB+JuZHdUFnk0B5WR/QyyaiLhyA==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEEArAjnXxXwnMwdfqR6UTENwbrYvb6a6cB5y0t/oomeLj3gxdJsV/8gMUuuyivR8bA==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "",
                             TwoFactorEnabled = false,
@@ -166,7 +166,7 @@ namespace TemplateforAspNetCore_0.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .UseIdentityColumn();
 
                     b.Property<string>("ClaimType")
                         .HasColumnType("nvarchar(max)");
@@ -327,7 +327,7 @@ namespace TemplateforAspNetCore_0.Migrations
                         {
                             Id = new Guid("63dc8fa6-07ae-4391-8916-e057f71239ce"),
                             CodeWord = "PageIndex",
-                            DateAdded = new DateTime(2020, 11, 14, 14, 13, 45, 69, DateTimeKind.Utc).AddTicks(5665),
+                            DateAdded = new DateTime(2020, 11, 22, 12, 16, 16, 905, DateTimeKind.Utc).AddTicks(3830),
                             Text = "Содержание заполняется администратором",
                             Title = "Главная"
                         },
@@ -335,7 +335,7 @@ namespace TemplateforAspNetCore_0.Migrations
                         {
                             Id = new Guid("70bf165a-700a-4156-91c0-e83fce0a277f"),
                             CodeWord = "PageServices",
-                            DateAdded = new DateTime(2020, 11, 14, 14, 13, 45, 69, DateTimeKind.Utc).AddTicks(8117),
+                            DateAdded = new DateTime(2020, 11, 22, 12, 16, 16, 905, DateTimeKind.Utc).AddTicks(7792),
                             Text = "Содержание заполняется администратором",
                             Title = "Наши услуги"
                         },
@@ -343,7 +343,7 @@ namespace TemplateforAspNetCore_0.Migrations
                         {
                             Id = new Guid("4aa76a4c-c59d-409a-84c1-06e6487a137a"),
                             CodeWord = "PageContacts",
-                            DateAdded = new DateTime(2020, 11, 14, 14, 13, 45, 69, DateTimeKind.Utc).AddTicks(8211),
+                            DateAdded = new DateTime(2020, 11, 22, 12, 16, 16, 905, DateTimeKind.Utc).AddTicks(7897),
                             Text = "Содержание заполняется администратором",
                             Title = "Контакты"
                         });

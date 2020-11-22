@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace TemplateforAspNetCore_0.Domain.Entities
 {
@@ -16,7 +13,7 @@ namespace TemplateforAspNetCore_0.Domain.Entities
         [Display(Name = "Название (заголовок)")]
         public virtual string Title { get; set; }
 
-        [Display(Name = "Название (заголовок)")]
+        [Display(Name = "Краткое описание")]
         public virtual string Subtitle { get; set; }
 
         [Display(Name = "Полное описание")]

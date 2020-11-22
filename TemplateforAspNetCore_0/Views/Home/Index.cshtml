@@ -1,5 +1,12 @@
-﻿<div>
-    <h1>
-        Это главная страница
-    </h1>
+﻿@using TemplateforAspNetCore_0.Domain.Entities
+@model TextField
+@{ 
+    ViewBag.Title = Model.MetaTitle;
+    ViewBag.Description = Model.MetaDescription;
+    ViewBag.KeyWords = Model.MetaKeywords;
+}
+
+<div>
+    @Html.Raw(Model.Text)
+     
 </div>

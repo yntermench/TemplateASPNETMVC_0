@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace TemplateforAspNetCore_0.Domain.Entities
 {
@@ -15,7 +11,7 @@ namespace TemplateforAspNetCore_0.Domain.Entities
         public override string Title { get; set; } = "Информационная страница";
 
 
-        [Display(Name = "Содержание страницы(заголовок)")]
+        [Display(Name = "Содержание страницы")]
         public override string Text { get; set; } = "Содержание заполняется администратором";
     }
 }

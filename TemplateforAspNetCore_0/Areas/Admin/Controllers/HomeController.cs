@@ -1,17 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
+using TemplateforAspNetCore_0.Domain;
 
 namespace TemplateforAspNetCore_0.Areas.Admin.Controllers
 {
+    [Area("Admin")]
     public class HomeController : Controller
     {
-        [Area("Admin")]
+        private readonly DataManager dataManager;
+
+        public HomeController(DataManager dataManager)
+        {
+            this.dataManager = dataManager;
+        }
+
         public IActionResult Index()
         {
-            return View();
+            return View(dataManager.ServiceItems.GetServiceItems());
         }
     }
 }

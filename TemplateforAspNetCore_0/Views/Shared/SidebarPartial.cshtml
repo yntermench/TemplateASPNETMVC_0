@@ -1,1 +1,6 @@
-﻿!!!sidebar
+﻿@using TemplateforAspNetCore_0.Models.ViewComponents
+<div class="col-4 col-12-medium">
+    <cashe>
+        @(await Component.InvokeAsync<SidebarViewComponent>())
+    </cashe>
+</div>
